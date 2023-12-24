@@ -160,7 +160,7 @@ export const createOrStartQuotesJob = async (data: QuoteInstance, event: any, st
       // );
       // scheduler.addSimpleIntervalJob(job);
       const job = new CronJob({
-        cronExpression: `0 ${data.cronHour} * * * *`,
+        cronExpression: `0 ${data.cronHour} * * *`,
       }, task, {id: data.category});
       scheduler.addCronJob(job);
       return true;

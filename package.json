@@ -16,18 +16,16 @@
     "mbuild": "node migration.js && robo build"
   },
   "dependencies": {
-    "@roboplay/robo.js": "^0.9.4",
-    "axios": "^1.5.0",
-    "better-sqlite3": "^8.4.0",
+    "@discordjs/voice": "^0.16.1",
+    "@roboplay/robo.js": "^0.9.11",
+    "axios": "^1.6.2",
+    "better-sqlite3": "^9.2.2",
     "cheerio": "^1.0.0-rc.12",
-    "cron": "^2.4.1",
-    "cron-schedule": "^4.0.0",
-    "croner": "^7.0.1",
     "discord.js": "^14.11.0",
     "dotenv": "^16.0.3",
-    "googlethis": "^1.8.0",
-    "i": "^0.3.7",
-    "npm": "^9.8.1",
+    "duckduckgo-search": "^1.0.7",
+    "emoji-reaction-plugin": "^1.0.1",
+    "libsodium-wrappers": "^0.7.13",
     "toad-scheduler": "^3.0.0"
   },
   "devDependencies": {

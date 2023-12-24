@@ -8,18 +8,19 @@
           "GuildMessages",
           "MessageContent",
           "GuildMessageReactions",
-          "GuildMessageTyping"
+          "GuildMessageTyping",
+          "GuildVoiceStates"
         ]
       },
       "plugins": [],
       "sage": {
-        "errorChannelId": "1123381317338415124",
-        "DISCORD_DEBUG_CHANNEL_ID": "1123381317338415124"
+        "errorChannelId": "1121852107943841802",
+        "DISCORD_DEBUG_CHANNEL_ID": "1121852107943841802"
       }
     },
     "type": "robo",
-    "updatedAt": "2023-10-08T17:34:08.501Z",
-    "version": "0.9.4"
+    "updatedAt": "2023-12-24T16:31:54.746Z",
+    "version": "0.9.11"
   },
   "api": {},
   "commands": {
@@ -83,37 +84,6 @@
       "__path": "\\.robo\\build\\commands\\checkmodulestates.js",
       "description": "Gets a list of all modules and their states"
     },
-    "collect": {
-      "__module": "collector",
-      "__path": "\\.robo\\build\\modules\\collector\\commands\\collect.js",
-      "description": "Collects a message by a message id and stores it in the database",
-      "options": [
-        {
-          "name": "id",
-          "description": "Message ID",
-          "required": true
-        },
-        {
-          "name": "category",
-          "choices": [
-            {
-              "name": "Idea",
-              "value": "idea"
-            },
-            {
-              "name": "Feedback",
-              "value": "feedback"
-            },
-            {
-              "name": "Question",
-              "value": "question"
-            }
-          ],
-          "description": "Message category",
-          "required": true
-        }
-      ]
-    },
     "dev": {
       "subcommands": {
         "logs": {
@@ -144,6 +114,18 @@
           "name": "channel",
           "description": "Choose a channel",
           "required": true
+        }
+      ]
+    },
+    "message": {
+      "__path": "\\.robo\\build\\commands\\message.js",
+      "description": "Send a message to a channel",
+      "options": [
+        {
+          "name": "message_channel",
+          "description": "Channel to send a message to",
+          "required": true,
+          "type": "channel"
         }
       ]
     },
@@ -312,24 +294,55 @@
       "__path": "\\.robo\\build\\modules\\memes\\commands\\rmeme.js",
       "description": "Sends a random meme from programmerhumor.io"
     },
+    "setbotactivity": {
+      "__path": "\\.robo\\build\\commands\\setbotactivity.js",
+      "description": "Set bot activity",
+      "options": [
+        {
+          "name": "activity",
+          "choices": [
+            {
+              "name": "Playing",
+              "value": 0
+            },
+            {
+              "name": "Streaming",
+              "value": 1
+            },
+            {
+              "name": "Listening",
+              "value": 2
+            },
+            {
+              "name": "Watching",
+              "value": 3
+            },
+            {
+              "name": "Custom",
+              "value": 4
+            },
+            {
+              "name": "Competing",
+              "value": 5
+            }
+          ],
+          "description": "Activity",
+          "required": true,
+          "type": "number"
+        },
+        {
+          "name": "text",
+          "description": "Add some custom text",
+          "type": "string"
+        }
+      ]
+    },
     "utils": {
       "subcommands": {
         "modules-message-template": {
           "__path": "\\.robo\\build\\commands\\utils\\modules-message-template.js"
         }
       }
-    },
-    "w3s": {
-      "__module": "w3sgoogle",
-      "__path": "\\.robo\\build\\modules\\w3sgoogle\\commands\\w3s.js",
-      "description": "Searches a w3schools website reference",
-      "options": [
-        {
-          "name": "request",
-          "description": "Search for W3Schools Reference.",
-          "required": true
-        }
-      ]
     }
   },
   "context": {
@@ -343,6 +356,9 @@
       }
     ],
     "interactionCreate": [
+      {
+        "__path": "\\.robo\\build\\events\\interactionCreate.js"
+      },
       {
         "__auto": true,
         "__path": "\\.robo\\build\\events\\interactionCreate\\__robo_interactionCreate.js"
@@ -384,8 +400,14 @@
   },
   "permissions": [
     "AddReactions",
+    "Connect",
+    "DeafenMembers",
+    "MoveMembers",
+    "MuteMembers",
     "ReadMessageHistory",
     "SendMessages",
+    "Speak",
+    "UseVAD",
     "ViewChannel"
   ],
   "middleware": [
