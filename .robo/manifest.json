@@ -19,8 +19,8 @@
       }
     },
     "type": "robo",
-    "updatedAt": "2023-12-24T16:31:54.746Z",
-    "version": "0.9.11"
+    "updatedAt": "2024-01-21T22:27:44.399Z",
+    "version": "0.9.21"
   },
   "api": {},
   "commands": {
@@ -83,22 +83,6 @@
     "checkmodulestates": {
       "__path": "\\.robo\\build\\commands\\checkmodulestates.js",
       "description": "Gets a list of all modules and their states"
-    },
-    "dev": {
-      "subcommands": {
-        "logs": {
-          "__path": "\\.robo\\build\\commands\\dev\\logs.js",
-          "description": "View most recent logs"
-        },
-        "status": {
-          "__path": "\\.robo\\build\\commands\\dev\\status.js",
-          "description": "View status of this Robo"
-        },
-        "restart": {
-          "__path": "\\.robo\\build\\commands\\dev\\restart.js",
-          "description": "Restart this Robo"
-        }
-      }
     },
     "help": {
       "__auto": true,
@@ -360,7 +344,6 @@
         "__path": "\\.robo\\build\\events\\interactionCreate.js"
       },
       {
-        "__auto": true,
         "__path": "\\.robo\\build\\events\\interactionCreate\\__robo_interactionCreate.js"
       }
     ],
@@ -387,7 +370,6 @@
         "__path": "\\.robo\\build\\events\\ready.js"
       },
       {
-        "__auto": true,
         "__path": "\\.robo\\build\\events\\ready\\__robo_ready.js"
       }
     ],

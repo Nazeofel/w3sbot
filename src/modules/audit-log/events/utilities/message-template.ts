@@ -1,7 +1,7 @@
 import { EmbedBuilder } from "discord.js";
 
 export default {
-  generateEmbedMessage: (message, eventType, attachmentsSize) => {
+  generateEmbedMessage: (message, eventType, attachmentsSize, executor) => {
 
     const channel = message.guild.channels.cache.find((ch) => ch.id === message.channelId);
     let event;
@@ -58,6 +58,15 @@ export default {
         {
           name: "Attachments: ",
           value: String(attachmentsSize)
+        },
+      )
+    }
+
+    if (executor) {
+      embed.addFields(
+        {
+          name: "Executor (username): ",
+          value: `${executor.username}`
         },
       )
     }
