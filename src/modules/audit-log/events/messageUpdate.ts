@@ -7,8 +7,8 @@ export default async (message: Message) => {
     type: AuditLogEvent.MessageDelete, 
     limit: 1
   })
-  const firstEntry = auditLogs.entries.first();
-  console.log('Message Update -> Executor -> ', firstEntry.executor.username)
+  // const firstEntry = auditLogs.entries.first();
+  // console.log('Message Update -> Executor -> ', firstEntry.executor.username)
   if(!message.author.bot) {
     try {
       const attachmentsArray = [];
@@ -23,7 +23,7 @@ export default async (message: Message) => {
       try {
         const auditChannelRequest = await dbService.getAuditLogChannel();
         if (auditChannelRequest && auditChannelRequest.code === 200 && auditChannelRequest.data) {
-          const messageTemplate = messageUtil.generateEmbedMessage(message, 'updated', message.attachments.size, firstEntry.executor);
+          const messageTemplate = messageUtil.generateEmbedMessage(message, 'updated', message.attachments.size, null);
           const auditChannel = message.guild.channels.cache.get(auditChannelRequest.data.channelId);
     
           if(!auditChannel) {

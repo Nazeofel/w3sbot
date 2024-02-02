@@ -10,6 +10,9 @@ import { fileURLToPath } from 'url';
 import { QuoteCategory, Quote } from '../../../types/types.js';
 import { AttachmentBuilder, Colors, EmbedBuilder } from 'discord.js';
 import axios from 'axios';
+import { Logger } from '@roboplay/robo.js';
+
+const logger = new Logger();
 
 const scheduler = new ToadScheduler();
 const __filename = fileURLToPath(import.meta.url);
@@ -69,7 +72,8 @@ const getRandomFunnyQuote = async (): Promise<Quote> => {
       text: data.quote
     };
   } catch (error) {
-    console.error("Error: " + error.message);
+    logger.error(`getRandomFunnyQuote -> error`);
+    logger.error(error)
   }
 }
 
@@ -88,7 +92,8 @@ export const getInpirationalQuoteOfTheDay = async (): Promise<Quote> => {
       text: data.quote
     };
   } catch (error) {
-    console.error("Error: " + error.message);
+    logger.error(`getInpirationalQuoteOfTheDay -> error`);
+    logger.error(error)
   }
 }
 
@@ -166,7 +171,8 @@ export const createOrStartQuotesJob = async (data: QuoteInstance, event: any, st
       return true;
 
   } catch (error) {
-    console.log(error)
+    logger.error(`createOrStartQuotesJob -> error`);
+    logger.error(error)
     return false
   }
 
@@ -183,7 +189,8 @@ export const restartExistingCronInstances = async (startEvent) => {
           await channel.send(`Quotes instance for category ${instance.category} started`);
         }
       } catch (error) {
-        console.log(error)
+        logger.error(`restartExistingCronInstances -> error`);
+        logger.error(error)
         const channel = await startEvent.channels.cache.get(`${process.env.DISCORD_DEBUG_CHANNEL_ID}`);
         if (channel) {
           await channel.send(error);
@@ -200,8 +207,10 @@ export const stopAndDeleteQuotesJob = async (category: string) => {
      await dbService.deleteQuotesInstance(category);
      scheduler.stopById(category);
      scheduler.removeById(category);
+     logger.info(`Quotes instance for category ${category} stopped`);
     }
   } catch (error) {
-    console.log(error)
+    logger.error(`stopAndDeleteQuotesJob -> error`);
+    logger.error(error)
   }
 }
