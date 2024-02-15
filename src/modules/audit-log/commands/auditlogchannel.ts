@@ -1,6 +1,5 @@
 import 'dotenv/config'
-import type { CommandConfig } from '@roboplay/robo.js'
-import dbService from '../../../db/service/index.js';
+import { Flashcore, type CommandConfig } from '@roboplay/robo.js'
 
 export const config: CommandConfig = {
   description: 'Sets a channel for audit logs',
@@ -13,22 +12,20 @@ export const config: CommandConfig = {
   ]
 }
 
-export default async (event) => {
-  const channelId = event.options._hoistedOptions[0].value.match(/\d+/)[0];
-  const channelName = event.guild.channels.cache.get(channelId).name;
+export default async (interaction) => {
+  const channelId = interaction.options._hoistedOptions[0].value.match(/\d+/)[0];
+  const channelName = interaction.guild.channels.cache.get(channelId).name;
 
 	try {
-    const request = await dbService.setAuditLogChannel({
+    await Flashcore.set('audit-log-channel', JSON.stringify({
       channelName: channelName,
       channelId: channelId
+    }), {
+      namespace: interaction.guildId!
     });
-    
-    if (request.code && request.code === 200) {
-      return `Audit log channel set - <#${channelId}>`       
-    } 
 
-    return `Audit channel could not be set.`   
+    return `Audit log channel set - <#${channelId}>`;
 	} catch(e) {
-    console.log(e)
+    console.error(e)
   }
 }

@@ -1,13 +1,14 @@
 import { Message } from 'discord.js'
-import dbService from '../../../db/service/index.js';
-import {allowedMediaTypes} from '../../../types/config.js';
+import { allowedMediaTypes } from '../../../types/config.js';
+import { Flashcore } from '@roboplay/robo.js';
 
 export default async (message: Message) => {
-  const mediaChannelRequest = await dbService.getMediaChannel();
-  if(mediaChannelRequest.data.channelId === message.channelId && mediaChannelRequest && 
-    mediaChannelRequest.code === 200 && 
-    mediaChannelRequest.data) {
-      const mediaChannel = message.member.guild.channels.cache.get(mediaChannelRequest.data.channelId);
+  const mediaChannelData = JSON.parse(await Flashcore.get('media-channel', {
+    namespace: message.guildId!
+  }));
+
+  if(mediaChannelData && mediaChannelData.channelId === message.channelId) {
+      const mediaChannel = message.member.guild.channels.cache.get(mediaChannelData.channelId);
       try {
         if (mediaChannel.isTextBased() && !message.author.bot) {
           const fetchedMessage = await mediaChannel.messages.fetch(message.id);

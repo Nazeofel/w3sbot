@@ -1,4 +1,3 @@
-const { EmbedBuilder } = require("discord.js");
 const { MessageEmbed } = require("discord.js");
 
 function generateEmbedMessage (message, eventType) {

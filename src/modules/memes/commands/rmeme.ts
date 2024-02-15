@@ -13,8 +13,6 @@ export default async (event) => {
     const response = await fetch(requestUrl);
     const $ = load(await response.text());
     const ogImage = $('meta[property="og:image"]').attr("content");
-    console.log(response)
-    console.log(ogImage)
     return ogImage;
   } catch (error) {
     console.error("Error:", error.message);

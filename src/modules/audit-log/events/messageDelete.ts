@@ -1,14 +1,8 @@
 import { Message, AttachmentBuilder, AuditLogEvent  } from 'discord.js'
-import dbService from '../../../db/service/index.js';
 import messageUtil from './utilities/message-template.js';
+import { Flashcore } from '@roboplay/robo.js';
 
 export default async (message: Message) => {
-  const auditLogs = await message.guild.fetchAuditLogs({
-    type: AuditLogEvent.MessageDelete, 
-    limit: 1
-  })
-  // const firstEntry = auditLogs.entries.first();
-  // console.log('Message Delete -> Executor -> ', firstEntry.executor.username)
   const attachmentsArray = [];
   if(message.attachments.size > 0) {
     message.attachments.map(attachment => {
@@ -19,12 +13,14 @@ export default async (message: Message) => {
     console.log('No attachments')
   }
   try {
-    const auditChannelRequest = await dbService.getAuditLogChannel();
-    if (auditChannelRequest && auditChannelRequest.code === 200 && auditChannelRequest.data) {
+    const auditLogChannelData = JSON.parse(await Flashcore.get('media-channel', {
+      namespace: message.guildId!
+    }));
+    if (auditLogChannelData) {
       const messageTemplate = messageUtil.generateEmbedMessage(message, 'deleted', message.attachments.size, null);
-      const auditChannel = message.guild.channels.cache.get(auditChannelRequest.data.channelId);
+      const auditChannel = message.guild.channels.cache.get(auditLogChannelData.channelId);
       if(!auditChannel) {
-        console.error(`Channel with id ${auditChannelRequest.data.channelId} not found`);
+        console.error(`Channel with id ${auditLogChannelData.channelId} not found`);
         return;
       }
 
