@@ -13,14 +13,15 @@ export default async (message: Message) => {
     console.log('No attachments')
   }
   try {
-    const auditLogChannelData = JSON.parse(await Flashcore.get('media-channel', {
+    const auditLogChannelData = await Flashcore.get('audit-log-channel', {
       namespace: message.guildId!
-    }));
+    }) as string;
     if (auditLogChannelData) {
+      const parsed = JSON.parse(auditLogChannelData);
       const messageTemplate = messageUtil.generateEmbedMessage(message, 'deleted', message.attachments.size, null);
-      const auditChannel = message.guild.channels.cache.get(auditLogChannelData.channelId);
+      const auditChannel = message.guild.channels.cache.get(parsed.channelId);
       if(!auditChannel) {
-        console.error(`Channel with id ${auditLogChannelData.channelId} not found`);
+        console.error(`Channel with id ${parsed.channelId} not found`);
         return;
       }
 
