@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@discordjs/voice": "^0.16.1",
-    "@roboplay/robo.js": "0.9.23",
+    "@roboplay/robo.js": "^0.9.21",
     "axios": "^1.6.2",
     "better-sqlite3": "^9.2.2",
     "cheerio": "^1.0.0-rc.12",
