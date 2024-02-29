@@ -188,5 +188,4 @@ const dbService = {
     }
   }
 }
-
 export default dbService;
