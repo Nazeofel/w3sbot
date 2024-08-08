@@ -1,5 +1,5 @@
 import 'dotenv/config'
-import type { CommandConfig } from '@roboplay/robo.js'
+import type { CommandConfig } from 'robo.js'
 import { createOrStartQuotesJob } from '../utils/utils.js';
 import { QuoteInstance, QuoteCategory } from '../../../types/types.js';
 

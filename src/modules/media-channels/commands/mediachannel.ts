@@ -1,5 +1,5 @@
 import 'dotenv/config'
-import { Flashcore, type CommandConfig } from '@roboplay/robo.js'
+import { Flashcore, type CommandConfig } from 'robo.js'
 
 export const config: CommandConfig = {
   description: 'Sets a channel as media only channel',
@@ -21,10 +21,10 @@ export default async (interaction) => {
       channelName: channelName,
       channelId: channelId
     }), {
-      namespace: interaction.guildId!
+      namespace: interaction.guildId
     });
 
-    const mediaChannel = interaction.member.guild.channels.cache.get(channelId);      
+    const mediaChannel = interaction.member.guild.channels.cache.get(channelId);
     mediaChannel.permissionOverwrites.create(interaction.guild.roles.everyone, {
       VIEW_CHANNEL: 1,
       SEND_MESSAGES: 0,
@@ -32,7 +32,7 @@ export default async (interaction) => {
     })
     .then(() => console.log('Permissions set successfully for @everyone!'))
     .catch(console.error);
-    return `Media-only channel set - <#${channelId}>`    
+    return `Media-only channel set - <#${channelId}>`
 
 	} catch(e) {
     console.error(e)

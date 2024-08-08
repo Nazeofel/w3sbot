@@ -28,7 +28,7 @@ export const config: CommandConfig = {
         {
           name: 'Enabled',
           value: '1',
-        }, 
+        },
         {
           name: 'Disabled',
           value: '0'
@@ -46,8 +46,8 @@ export default async (event) => {
     if (state) {
       return `${module} is enabled.`
     } else {
-      return `${module} is disabled.` 
-    } 
+      return `${module} is disabled.`
+    }
   } catch (error) {
     console.log(error)
   }

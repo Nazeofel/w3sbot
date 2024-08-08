@@ -1,6 +1,6 @@
 import { Message, AttachmentBuilder } from 'discord.js'
 import messageUtil from './utilities/message-template.js';
-import { Flashcore } from '@roboplay/robo.js';
+import { Flashcore } from 'robo.js';
 
 export default async (message: Message) => {
   if(!message.author.bot) {
@@ -10,18 +10,18 @@ export default async (message: Message) => {
         message.attachments.map(attachment => {
           const att = new AttachmentBuilder(attachment.url)
           attachmentsArray.push(att);
-        })  
+        })
       } else {
         console.log('No attachments')
       }
       try {
-        const auditLogChannelData = JSON.parse(await Flashcore.get('media-channel', {
+        const auditLogChannelData = JSON.parse(await Flashcore.get('audit-log-channel', {
           namespace: message.guildId!
         }));
         if (auditLogChannelData) {
           const messageTemplate = messageUtil.generateEmbedMessage(message, 'updated', message.attachments.size, null);
           const auditChannel = message.guild.channels.cache.get(auditLogChannelData.channelId);
-    
+
           if(!auditChannel) {
             console.error(`Channel with id ${auditLogChannelData.channelId} not found`);
             return;

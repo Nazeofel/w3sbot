@@ -1,4 +1,4 @@
-import { getManifest } from '@roboplay/robo.js';
+import { getManifest } from 'robo.js';
 
 const config = {
   description: "Displays a list of commands."
