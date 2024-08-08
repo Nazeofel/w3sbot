@@ -18,9 +18,11 @@
         "DISCORD_DEBUG_CHANNEL_ID": "1121852107943841802"
       }
     },
+    "language": "typescript",
+    "mode": "production",
     "type": "robo",
-    "updatedAt": "2024-01-21T22:27:44.399Z",
-    "version": "0.9.21"
+    "updatedAt": "2024-08-06T18:40:39.093Z",
+    "version": "0.10.13"
   },
   "api": {},
   "commands": {
@@ -32,6 +34,22 @@
         {
           "name": "channel",
           "description": "Set a channel where audit logs will be stored",
+          "required": true
+        }
+      ]
+    },
+    "bulkdeletemessages": {
+      "__path": "\\.robo\\build\\commands\\bulkdeletemessages.js",
+      "description": "Delete bulk of messages in a channel",
+      "options": [
+        {
+          "name": "channel",
+          "description": "Choose a channel",
+          "required": true
+        },
+        {
+          "name": "number",
+          "description": "Number of messages",
           "required": true
         }
       ]
@@ -348,6 +366,9 @@
       }
     ],
     "messageCreate": [
+      {
+        "__path": "\\.robo\\build\\events\\messageCreate.js"
+      },
       {
         "__module": "media-channels",
         "__path": "\\.robo\\build\\modules\\media-channels\\events\\messageCreate.js"

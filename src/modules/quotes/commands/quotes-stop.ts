@@ -1,5 +1,5 @@
 import 'dotenv/config'
-import type { CommandConfig } from '@roboplay/robo.js'
+import type { CommandConfig } from 'robo.js'
 import { createOrStartQuotesJob, stopAndDeleteQuotesJob } from '../utils/utils.js';
 import { ToadScheduler, Task, CronJob, SimpleIntervalJob } from 'toad-scheduler';
 import { QuoteInstance, QuoteCategory } from '../../../types/types.js';

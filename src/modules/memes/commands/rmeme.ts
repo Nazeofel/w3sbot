@@ -1,5 +1,5 @@
 import 'dotenv/config'
-import type { CommandConfig } from '@roboplay/robo.js'
+import type { CommandConfig } from 'robo.js'
 import {load} from 'cheerio';
 
 export const config: CommandConfig = {
@@ -8,7 +8,7 @@ export const config: CommandConfig = {
 
 export default async (event) => {
   const requestUrl = "https://programmerhumor.io/?bimber_random_post=true";
-  
+
   try {
     const response = await fetch(requestUrl);
     const $ = load(await response.text());

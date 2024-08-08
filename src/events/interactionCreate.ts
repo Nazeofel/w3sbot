@@ -1,7 +1,8 @@
-import { Flashcore } from '@roboplay/robo.js';
+import { Flashcore } from 'robo.js';
 import { ModalSubmitInteraction, TextChannel } from 'discord.js';
 
 export default async (interaction: any) => {
+  console.log(interaction)
       if (interaction.isModalSubmit()) {
         const i = interaction as ModalSubmitInteraction;
         if (i.customId === 'custom_message') {

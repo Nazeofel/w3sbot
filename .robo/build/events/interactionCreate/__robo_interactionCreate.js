@@ -1,4 +1,4 @@
-import { handleDebugButton } from '@roboplay/robo.js/dist/core/debug.js';
+import { handleDebugButton } from 'robo.js/dist/core/debug.js';
 
 var interactionCreate_default = handleDebugButton;
 

@@ -1,5 +1,9 @@
 import { config } from 'dotenv';
-config();
+import path from 'path';
+// const env = process.env.NODE_ENV || 'development';
+// const envFilePath = path.resolve(process.cwd(), `.env.${env}`);
+// console.log(env)
+// config({ path: envFilePath });
 
 export default {
 	clientOptions: {

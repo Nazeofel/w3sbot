@@ -10,7 +10,7 @@ import { fileURLToPath } from 'url';
 import { QuoteCategory, Quote } from '../../../types/types.js';
 import { AttachmentBuilder, Colors, EmbedBuilder } from 'discord.js';
 import axios from 'axios';
-import { Logger } from '@roboplay/robo.js';
+import { Logger } from 'robo.js';
 
 const logger = new Logger();
 
@@ -77,7 +77,7 @@ const getRandomFunnyQuote = async (): Promise<Quote> => {
   }
 }
 
-export const getInpirationalQuoteOfTheDay = async (): Promise<Quote> => { 
+export const getInpirationalQuoteOfTheDay = async (): Promise<Quote> => {
   try {
     const response = await axios.get("https://quotes.rest/qod?category=inspire&language=en", {
       headers: {
@@ -131,10 +131,10 @@ export const createOrStartQuotesJob = async (data: QuoteInstance, event: any, st
         return await getRandomProgrammingQuote();
     }
   }
-    
+
   try {
     const task = new Task(
-      `${data.category}-task`, async () => { 
+      `${data.category}-task`, async () => {
         const d = data;
         let instance = (await dbService.getQuotesInstance(d.category)).data;
         if (!instance) {
@@ -178,7 +178,7 @@ export const createOrStartQuotesJob = async (data: QuoteInstance, event: any, st
 
 }
 
-export const restartExistingCronInstances = async (startEvent) => { 
+export const restartExistingCronInstances = async (startEvent) => {
   const instances = await dbService.getAllQuotesInstances();
   if (instances.data && instances.data.length > 0) {
     instances.data.forEach(async (instance: QuoteInstance) => {
