@@ -1,6 +1,6 @@
 import 'dotenv/config'
-import type { CommandConfig } from '@roboplay/robo.js'
-import { portal } from '@roboplay/robo.js';
+import type { CommandConfig } from 'robo.js'
+import { portal } from 'robo.js';
 import { Modules } from '../types/types.js'
 
 const moduleChoices = [];

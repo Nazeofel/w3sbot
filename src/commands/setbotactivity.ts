@@ -1,4 +1,4 @@
-import { type CommandConfig } from '@roboplay/robo.js';
+import { type CommandConfig } from 'robo.js';
 import { ChatInputCommandInteraction, ActivityType } from 'discord.js';
 
 const generateActivities = (): ({name: string, value: number})[] => {
@@ -10,7 +10,7 @@ const generateActivities = (): ({name: string, value: number})[] => {
     }
   }
 
-  return activityArray; 
+  return activityArray;
 }
 
 export const config: CommandConfig = {
@@ -46,7 +46,7 @@ export default async (interaction: ChatInputCommandInteraction) => {
   });
 
   return {
-    content: `Bot activity set`, 
+    content: `Bot activity set`,
     ephemeral: true
   };
 }
