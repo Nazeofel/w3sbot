@@ -2,7 +2,7 @@ import { portal } from 'robo.js';
 import fs from 'fs';
 
 /**
- * @type {import('@roboplay/robo.js').Config}
+ * @type {import('robo.js').Config}
  **/
 const updateModulesStatus = () => {
   const jsonString = fs.readFileSync('./modules.json', 'utf8');
