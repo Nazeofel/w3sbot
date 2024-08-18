@@ -12,16 +12,17 @@
           "GuildVoiceStates"
         ]
       },
-      "plugins": [],
-      "sage": {
-        "errorChannelId": "1121852107943841802",
-        "DISCORD_DEBUG_CHANNEL_ID": "1121852107943841802"
-      }
+      "plugins": [
+        [
+          "emoji-reaction-plugin",
+          {}
+        ]
+      ]
     },
     "language": "typescript",
-    "mode": "production",
+    "mode": "dev",
     "type": "robo",
-    "updatedAt": "2024-08-06T18:40:39.093Z",
+    "updatedAt": "2024-08-11T21:47:00.419Z",
     "version": "0.10.13"
   },
   "api": {},
@@ -366,6 +367,14 @@
       }
     ],
     "messageCreate": [
+      {
+        "__auto": true,
+        "__plugin": {
+          "name": "emoji-reaction-plugin",
+          "path": "node_modules\\.pnpm\\emoji-reaction-plugin@1.0.1_@roboplay+robo.js@0.9.26_@swc+core@1.7.10_discord.js@14.15.3_typescript@5.5.4_\\node_modules\\emoji-reaction-plugin"
+        },
+        "__path": "\\.robo\\build\\events\\messageCreate.js"
+      },
       {
         "__path": "\\.robo\\build\\events\\messageCreate.js"
       },

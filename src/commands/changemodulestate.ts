@@ -1,6 +1,6 @@
 import 'dotenv/config'
-import type { CommandConfig } from '@roboplay/robo.js'
-import { portal } from '@roboplay/robo.js';
+import type { CommandConfig } from 'robo.js'
+import { portal } from 'robo.js';
 import { Modules } from '../types/types.js'
 
 const moduleChoices = [];
@@ -40,6 +40,7 @@ export const config: CommandConfig = {
 
 export default async (event) => {
   try {
+
     const module = event.options.get('module').value;
     const state = Boolean(Number(event.options.get('state').value));
     portal.module(module).setEnabled(state);

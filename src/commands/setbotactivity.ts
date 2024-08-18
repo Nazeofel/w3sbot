@@ -1,4 +1,4 @@
-import { type CommandConfig } from '@roboplay/robo.js';
+import { type CommandConfig } from 'robo.js';
 import { ChatInputCommandInteraction, ActivityType } from 'discord.js';
 
 const generateActivities = (): ({name: string, value: number})[] => {
