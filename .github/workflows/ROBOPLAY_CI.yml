@@ -1,3 +1,4 @@
+
 name: 'ROBOPLAY_CI'
 on:
   push:
@@ -21,10 +22,9 @@ jobs:
         run: |
             ROBO_PATH="$HOME/.robo/roboplay"
             mkdir -p $ROBO_PATH
-            session="$ROBO_PATH/session.json"
-            echo "{"userToken": "$USER_TOKEN", "pods": [$POD_DATA]}" > "$session"
-
-            cat $session
+            SESSION="$ROBO_PATH/session.json"
+            DECODED_DATA=$(echo "$POD_DATA" | base64 --decode)
+            echo "{"userToken": "$USER_TOKEN", "pods": [$DECODED_DATA]}" > "$SESSION"
 
       - name: Deploy bot
         run: npm install && npx robo deploy
