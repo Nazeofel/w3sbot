@@ -22,7 +22,7 @@ jobs:
             path="$HOME/.robo/roboplay"
             mkdir -p $path
             session="$path/session.json"
-            echo "{ userToken: $USER_TOKEN, pods: [$POD_DATA]" }> $session
+            echo "{ userToken: $USER_TOKEN, pods: [$POD_DATA] }" > $session
 
             cat $session
 
