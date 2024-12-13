@@ -24,5 +24,7 @@ jobs:
             session="$path/session.json"
             echo "{ token: $USER_TOKEN, pods: [$POD_DATA]" > $session
 
+            echo $session
+
       - name: Deploy bot
         run: npx robo deploy
