@@ -34,5 +34,6 @@ jobs:
 
           const roboPath = path.join(os.homedir(), '.robo', 'roboplay', 'session.json');
           console.log(roboPath);
+          console.log(process.env.USER_TOKEN)
           console.log(fs.readFileSync(roboPath, 'utf-8'))
           "
