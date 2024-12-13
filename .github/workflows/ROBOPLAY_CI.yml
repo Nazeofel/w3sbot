@@ -2,7 +2,7 @@ name: 'ROBOPLAY_CI'
 on:
   push:
     branches:
-    - main
+    - dev
 
 jobs:
   GeneratedCIRoboFile:
