@@ -1,0 +1,28 @@
+name: 'ROBOPLAY_CI'
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  GeneratedCIRoboFile:
+      runs-on: ubuntu-latest
+      steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+
+      - name: Create session File
+        env:
+          USER_TOKEN: ${{ secrets.USER_TOKEN }}
+          POD_DATA: ${{ secrets.POD_DATA }}
+        run: |
+            path="$HOME/.robo/roboplay/"
+            mkdir -p $path
+            session="$path/session.json"
+            echo "{ token: $USER_TOKEN, pods: [$POD_DATA]" > $session
+
+      - name: Deploy bot
+        run: npx robo deploy

@@ -16,10 +16,9 @@
     "mbuild": "node migration.js && robo build"
   },
   "dependencies": {
-    "@discordjs/voice": "^0.16.1",
     "robo.js": "^0.10.13",
+    "@roboplay/sage": "link:@roboplay/sage",
     "axios": "^1.6.2",
-    "better-sqlite3": "^9.2.2",
     "cheerio": "^1.0.0-rc.12",
     "discord.js": "^14.14.1",
     "dotenv": "^16.0.3",
