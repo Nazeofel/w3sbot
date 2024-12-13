@@ -24,19 +24,7 @@ jobs:
             mkdir -p $ROBO_PATH
             SESSION="$ROBO_PATH/session.json"
             DECODED_DATA=$(echo "$POD_DATA" | base64 --decode)
-            echo "{"userToken": "$USER_TOKEN", "pods": [$DECODED_DATA]}" > "$SESSION"
+            echo "$DECODED_DATA" > "$SESSION"
 
-      - name: test
-        env:
-          USER_TOKEN: ${{ secrets.USER_TOKEN }}
-          POD_DATA: ${{ secrets.POD_DATA }}
-        run: |
-          node -e "
-          const path = require('path');
-          const fs = require('fs');
-
-          const roboPath = path.join(os.homedir(), '.robo', 'roboplay', 'session.json');
-          console.log(roboPath);
-          console.log(process.env.USER_TOKEN)
-          console.log(fs.readFileSync(roboPath, 'utf-8'))
-          "
+      - name: Deploy bot
+        run: npm install && npx robo deploy
