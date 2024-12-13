@@ -26,5 +26,6 @@ jobs:
             DECODED_DATA=$(echo "$POD_DATA" | base64 --decode)
             echo "{"userToken": "$USER_TOKEN", "pods": [$DECODED_DATA]}" > "$SESSION"
 
-      - name: Deploy bot
-        run: npm install && npx robo deploy
+      - name: test
+        run: |
+          node -e "const path = require('path');const roboPath = path.join(os.homedir(), '.robo', 'roboplay', 'session.json');console.log(roboPath);"
