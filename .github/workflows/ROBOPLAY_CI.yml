@@ -19,7 +19,7 @@ jobs:
           USER_TOKEN: ${{ secrets.USER_TOKEN }}
           POD_DATA: ${{ secrets.POD_DATA }}
         run: |
-            path="$HOME/.robo/roboplay/"
+            path="$HOME/.robo/roboplay"
             mkdir -p $path
             session="$path/session.json"
             echo "{ token: $USER_TOKEN, pods: [$POD_DATA]" > $session
