@@ -16,7 +16,7 @@
     "mbuild": "node migration.js && robo build"
   },
   "dependencies": {
-    "robo.js": "^0.10.13",
+    "robo.js": "0.10.27",
     "axios": "^1.6.2",
     "cheerio": "^1.0.0-rc.12",
     "discord.js": "^14.14.1",
