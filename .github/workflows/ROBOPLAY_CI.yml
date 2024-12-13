@@ -27,6 +27,9 @@ jobs:
             echo "{"userToken": "$USER_TOKEN", "pods": [$DECODED_DATA]}" > "$SESSION"
 
       - name: test
+        env:
+          USER_TOKEN: ${{ secrets.USER_TOKEN }}
+          POD_DATA: ${{ secrets.POD_DATA }}
         run: |
           node -e "
           const path = require('path');
