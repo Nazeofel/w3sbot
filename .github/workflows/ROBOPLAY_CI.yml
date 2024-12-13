@@ -28,4 +28,11 @@ jobs:
 
       - name: test
         run: |
-          node -e "const path = require('path');const roboPath = path.join(os.homedir(), '.robo', 'roboplay', 'session.json');console.log(roboPath);"
+          node -e "
+          const path = require('path');
+          const fs = require('fs');
+
+          const roboPath = path.join(os.homedir(), '.robo', 'roboplay', 'session.json');
+          console.log(roboPath);
+          console.log(fs.readFileSync(roboPath, 'utf-8'))
+          "
