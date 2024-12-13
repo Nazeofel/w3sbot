@@ -27,4 +27,4 @@ jobs:
             echo $session
 
       - name: Deploy bot
-        run: npx robo deploy
+        run: npm install && npx robo deploy
