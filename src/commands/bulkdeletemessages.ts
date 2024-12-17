@@ -24,7 +24,7 @@ export default async (interaction) => {
     const channel = interaction.guild.channels.cache.get(channelId);
     return channel.bulkDelete(Number(messagesNumber))
       .then(() => {
-        channel.send('Messages deleted successfully')
+        channel.send('Messages delfeted successfully')
       }).cache((error) => {
         channel.send(JSON.stringify(error))
       })
